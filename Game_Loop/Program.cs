@@ -8,10 +8,10 @@ namespace Game_Loop
 {
 	class Program
 	{
-		static int X;
-		static int Y;
-		static bool gameOver;
-		static int userInput;
+		static int X = 0;
+		static int Y = 0;
+		static bool gameOver = false;
+
 
 		static void PlayerUpdate()
 		{
@@ -19,52 +19,54 @@ namespace Game_Loop
 
 			if (Input.Key == ConsoleKey.W)
 			{
-				Console.Clear();
-				Console.SetCursorPosition(X, Y--);
-				Console.WriteLine(".");
-				
+				Y--;
+
 			}
 			if (Input.Key == ConsoleKey.S)
 			{
-				Console.Clear();
-				Console.SetCursorPosition(X, Y++);
-				Console.WriteLine(".");
+				Y++;
 			}
 			if (Input.Key == ConsoleKey.A)
 			{
-				Console.Clear();
-				Console.SetCursorPosition(X--, Y);
-				Console.WriteLine(".");
+				X--;
 			}
 			if (Input.Key == ConsoleKey.D)
 			{
-				Console.Clear();
-				Console.SetCursorPosition(X++, Y); 
-				Console.WriteLine(".");
+				X++;
+
+			}
+			if (Input.Key == ConsoleKey.Escape)
+			{
+
+				Console.WriteLine("GAME OVER!!");
+				Console.WriteLine("Press Enter You Are Done");
+				gameOver = true;
+
+
 			}
 		}
 
 
 		static void PlayerDraw()
 		{
+			Console.Clear();
 			Console.SetCursorPosition(X, Y);
 			Console.WriteLine(".");
+
 		}
 
 		static void Main(string[] args)
 		{
-			PlayerDraw();
+			ConsoleKeyInfo Input = Console.ReadKey(true);
+
 			while (gameOver == false)
 			{
+				PlayerDraw();
 				PlayerUpdate();
-
 			}
 
-			if (gameOver == true)
-			{
-				Console.WriteLine("GAME OVER!!");
 
-			}
+
 
 
 
