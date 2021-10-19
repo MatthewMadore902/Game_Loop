@@ -19,8 +19,10 @@ namespace Game_Loop
 
 			if (Input.Key == ConsoleKey.W)
 			{
-				Y--;
-
+				if (Y >= 1)
+				{
+					Y--;
+				}
 			}
 			if (Input.Key == ConsoleKey.S)
 			{
@@ -28,7 +30,10 @@ namespace Game_Loop
 			}
 			if (Input.Key == ConsoleKey.A)
 			{
-				X--;
+				if (X >= 1)
+				{
+					X--;
+				}
 			}
 			if (Input.Key == ConsoleKey.D)
 			{
@@ -52,7 +57,6 @@ namespace Game_Loop
 			Console.Clear();
 			Console.SetCursorPosition(X, Y);
 			Console.WriteLine(".");
-
 		}
 
 		static void Main(string[] args)
